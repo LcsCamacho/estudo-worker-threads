@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Api Template Express + TS - Lucas Camacho</title>
+  </head>
+  <body>
+    <div id="redoc-container"></div>
+    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+    <script>
+      const styles = {
+        expandResponses: "all",
+        requiredPropsFirst: true,
+        // hideLoading: true,
+        // nativeScrollbars: true,
+        theme: {
+          colors: {
+            primary: {
+              main: "#1a73e8",
+            },
+          },
+          typography: {
+            fontSize: "16px",
+            lineHeight: "1.5",
+          },
+          sidebar: {
+            width: "240px",
+            backgroundColor: "#f5f5f5",
+          },
+          // rightPanel: {
+          //   backgroundColor: "#111111",
+          // },
+          // codeBlock: {
+          //   backgroundColor: "#111111",
+          // },
+          logo: {
+            gutter: "0",
+          },
+        },
+      };
+      Redoc.init(
+        "http://localhost:3777/swagger",
+        {
+          ...styles,
+        },
+        document.getElementById("redoc-container"),
+      );
+    </script>
+  </body>
+</html>

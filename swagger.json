@@ -1,0 +1,295 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0",
+    "title": "Setup Express + TS",
+    "description": "Template de uma api feita em node.js com express e typescript",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "name": "API Support",
+      "url": "http://www.swagger.io/support",
+      "email": "lucas.camachofilhoo@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "schemes": ["http", "https"],
+    "host": "localhost:3777",
+    "basePath": "/"
+  },
+  "paths": {
+    "/home": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Home"],
+        "summary": "Home",
+        "description": "Home",
+        "operationId": "home",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ResponseHome"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "422": {
+            "description": "Dados inválidos"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Home"],
+        "summary": "Home",
+        "description": "Home",
+        "operationId": "home",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {
+          "description": "Home",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestHome"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Criado  com sucesso"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "422": {
+            "description": "Dados inválidos"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/home/{id}": {
+      "get": {
+        "tags": ["Home"],
+        "summary": "Home",
+        "description": "Home",
+        "operationId": "home",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseHome"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Id is required"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "422": {
+            "description": "Dados inválidos"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      },
+      "put": {
+        "tags": ["Home"],
+        "summary": "Home",
+        "description": "Home",
+        "operationId": "home",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Id is required"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "422": {
+            "description": "Dados inválidos"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["Home"],
+        "summary": "Home",
+        "description": "Home",
+        "operationId": "home",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Id is required"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "description": "Autenticação utilizando JWT",
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "RequestHome": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Lucas",
+            "description": "Nome do usuário"
+          },
+          "age": {
+            "type": "number",
+            "example": 20,
+            "description": "Idade do usuário"
+          },
+          "email": {
+            "type": "string",
+            "example": "lucas.camacho@gmail.com",
+            "description": "Email do usuário"
+          },
+          "password": {
+            "type": "string",
+            "example": "123456",
+            "description": "Senha do usuário"
+          },
+          "gender": {
+            "enums": ["MASCULINO", "FEMININO"],
+            "example": "MASCULINO",
+            "description": "Genêro do usuário"
+          }
+        },
+        "required": [
+          "name",
+          "age",
+          "email",
+          "password",
+          "gender"
+        ]
+      },
+      "ResponseHome": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Lucas",
+            "description": "Nome do usuário"
+          },
+          "age": {
+            "type": "number",
+            "example": 20,
+            "description": "Idade do usuário"
+          },
+          "email": {
+            "type": "string",
+            "example": "lucas.camacho@gmail.com",
+            "description": "Email do usuário"
+          },
+          "gender": {
+            "enum": ["MASCULINO", "FEMININO"],
+            "example": "MASCULINO",
+            "description": "Genêro do usuário"
+          },
+          "id": {
+            "type": "string",
+            "example": "d12sd3-12312-12312-12312",
+            "description": "UUID random do usuário"
+          }
+        }
+      }
+    }
+  },
+  "operationId": "Home"
+}
